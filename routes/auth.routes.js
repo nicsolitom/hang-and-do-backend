@@ -39,7 +39,7 @@ router.post('/signup', (req, res) => {
     if (found) {
       return res
         .status(400)
-        .json({ errorMessage: 'Email already has a account.' });
+        .json({ errorMessage: 'This email already has a account.' });
     }
 
     // if user is not found, create a new user - start with hashing the password
