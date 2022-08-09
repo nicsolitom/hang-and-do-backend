@@ -4,12 +4,12 @@ const { Schema, model } = mongoose;
 const planSchema = new Schema(
   {
     title: { type: String, required: true },
-    date_time: Date,
+    dateTime: Date,
     description: { type: String, required: true },
-    img_url: String,
+    imgUrl: String,
     location: String,
-    created_by: { type: Schema.Types.ObjectId, ref: "User"},
-    invite_link: String,
+    createdBy: { type: Schema.Types.ObjectId, ref: "User"},
+    inviteLink: String,
     joined: [{ type: Schema.Types.ObjectId, ref: "User"}],
     posts: [{ type: Schema.Types.ObjectId, ref: 'Post'}]
   },

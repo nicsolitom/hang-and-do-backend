@@ -9,9 +9,9 @@ const Post = require('../models/Post.model');
 
 // Create > new plan
 router.post('/plans',  isAuthenticated, (req, res, next) => {
-    const { title, description, img_url, location, created_by, invite_link, joined, posts } = req.body;
+    const { title, dateTime, description, imgUrl, location, createdBy } = req.body;
 
-    Plan.create({ title, description, img_url, location, created_by, invite_link, joined, posts })
+    Plan.create({ title, dateTime, description, imgUrl, location, createdBy })
         .then(response => res.json(response))
         .catch(err => res.json(err));
 });
