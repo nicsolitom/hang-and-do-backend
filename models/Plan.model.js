@@ -4,6 +4,7 @@ const { Schema, model } = mongoose;
 const planSchema = new Schema(
   {
     title: { type: String, required: true },
+    date_time: Date,
     description: { type: String, required: true },
     img_url: String,
     location: String,
