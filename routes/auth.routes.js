@@ -125,6 +125,18 @@ router.post('/login', (req, res, next) => {
     });
 });
 
+router.get('/users', isAuthenticated, (req, res, next) => {
+    User.find()
+        .then(allUsers => {
+            res.json(allUsers)
+        })
+        .catch(err => {
+            res.json(err);
+            
+        });
+});
+
+
 router.get('/verify', isAuthenticated, (req, res, next) => {
   console.log(`req.payload`, req.payload);
   res.status(200).json(req.payload);
