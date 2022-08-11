@@ -5,7 +5,7 @@ const postSchema = new Schema(
   {
     postText: { type: String, required: true },
     imgUrl: String,
-    plan: { type: Schema.Types.ObjectId, ref: "Plan" },
+    planId: { type: Schema.Types.ObjectId, ref: "Plan" },
     createdBy: { type: Schema.Types.ObjectId, ref: "User" }
   },
   {
@@ -14,4 +14,3 @@ const postSchema = new Schema(
 );
 
 module.exports = model("Post", postSchema);
- 
