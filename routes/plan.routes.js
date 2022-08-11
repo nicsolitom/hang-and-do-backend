@@ -45,6 +45,24 @@ router.get('/plans/:planId', isAuthenticated, (req, res, next) => {
 })
 
 
+//Delete project
+router.delete('/plans/:planId', isAuthenticated, (req, res, next) => {
+    const { planId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(planId)) {
+        res.status(400).json({ message: 'Specified planId is not valid' });
+        return;
+    }
+    
+    // .then(deletedPlan => {
+    //     return Post.deleteMany({ _id: { $in: deletedPlan.posts } });
+    // })
+
+
+    Plan.findByIdAndRemove(planId)
+        .then(() => res.json({ message: `Plan with id ${planId} & all associated tasks were removed successfully.` }))
+        .catch(error => res.status(500).json(error));
+})
 
 
 module.exports = router;
