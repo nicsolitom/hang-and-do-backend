@@ -11,19 +11,19 @@ const Post = require('../models/Post.model');
 // Create > new post to specific plan
 // TO ADD + Add new post _id to plan
 // Expects param planId + created_by + post_text
-router.post('/plans/:planId/post', (req, res, next) => {
-    const { planId } = req.params;
-    const { post_text, img_url, created_by } = req.body;
+router.post('/posts', (req, res, next) => {
+    // const { planId } = req.params;
+    const { postText, planId, createdBy } = req.body;
     
-    Post.create({ post_text, img_url, plan: planId, created_by })
+    Post.create({ postText, planId, createdBy })
     .then(response => { 
-        console.log(response._id);
+        // console.log(response._id);
         return res.json(response)})
     .catch(err => res.json(err));
 });
 
 // Read > all posts from specific plan
-router.get('/plans/:planId/post', (req, res, next) => {
+router.get('/posts', (req, res, next) => {
     Post.find()
         .then(allPlans => {
             res.json(allPlans)
