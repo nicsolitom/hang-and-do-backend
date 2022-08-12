@@ -11,7 +11,7 @@ const Post = require('../models/Post.model');
 // Create > new post to specific plan
 // TO ADD + Add new post _id to plan
 // Expects param planId + created_by + post_text
-router.post('/posts', (req, res, next) => {
+router.post('/posts', isAuthenticated, (req, res, next) => {
     // const { planId } = req.params;
     const { postText, planId, createdBy } = req.body;
     
@@ -23,7 +23,7 @@ router.post('/posts', (req, res, next) => {
 });
 
 // Read > all posts from specific plan
-router.get('/posts', (req, res, next) => {
+router.get('/posts', isAuthenticated, (req, res, next) => {
     Post.find()
         .then(allPlans => {
             res.json(allPlans)
