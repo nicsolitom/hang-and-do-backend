@@ -48,15 +48,12 @@ router.put("/plans/:planId", isAuthenticated, (req, res, next) => {
   const { planId } = req.params;
   const { userId } = req.body;
 
-  console.log("userId: ", userId);
-  console.log("planId: ", planId);
-
   if (!mongoose.Types.ObjectId.isValid(planId)) {
     res.status(400).json({ message: "Specified planId is not valid" });
     return;
   }
 
-  Plan.findByIdAndUpdate(planId, { $push: { joined: userId } }, { new: true })
+  Plan.findByIdAndUpdate(planId, { $addToSet: { joined: userId } }, { new: true })
     .then((response) => {
       console.log(response);
 
